@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
     region = "ap-northeast-2"
     bucket = "terraform-nalbam-seoul"
-    key = "demo-sms-slack.tfstate"
+    key = "dev-sms-slack.tfstate"
   }
   required_version = "> 0.11.0"
 }
@@ -18,7 +18,7 @@ module "domain" {
   domain = "${var.domain}"
 }
 
-module "demo-sms-slack" {
+module "dev-sms-slack" {
   source = "git::https://github.com/nalbam/terraform-aws-lambda-api.git"
   region = "${var.region}"
 
@@ -44,5 +44,5 @@ module "demo-sms-slack" {
 }
 
 output "url" {
-  value = "https://${module.demo-sms-slack.domain}/demos"
+  value = "https://${module.dev-sms-slack.domain}/demos"
 }
