@@ -38,8 +38,12 @@ function processEvent(event, callback) {
     const body = JSON.parse(event.body);
 
     const message = {
-        title: body.phone_number,
-        text: body.message,
+        username: body.id,
+        icon_emoji: ':iphone:',
+        attachments: [{
+            text: body.message,
+            footer: body.phone_number,
+        }]
     };
 
     postMessage(message, (response) => {
