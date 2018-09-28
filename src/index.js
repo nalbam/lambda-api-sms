@@ -38,11 +38,12 @@ function processEvent(event, callback) {
     const body = JSON.parse(event.body);
 
     const message = {
-        username: body.id,
+        username: 'sms',
         icon_emoji: ':vibration_mode:',
         attachments: [{
+            title: body.phone_number,
             text: body.message,
-            footer: body.phone_number,
+            footer: body.id,
         }]
     };
 
