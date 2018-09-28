@@ -39,7 +39,8 @@ module "dev-sms-slack" {
   domain_name     = "${var.stage}-${var.name}.${var.domain}"
 
   env_vars = {
-    PROFILE = "${var.stage}"
+    PROFILE        = "${var.stage}"
+    SLACK_HOOK_URL = "${var.SLACK_HOOK_URL}"
   }
 }
 
