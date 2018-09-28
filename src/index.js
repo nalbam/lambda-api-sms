@@ -37,13 +37,12 @@ function postMessage(message, callback) {
 function processEvent(event, callback) {
     const body = JSON.parse(event.body);
 
-    const text = `*${body.phone_number}* ${body.message}`;
-
-    const slackMessage = {
-        text: text,
+    const message = {
+        title: body.phone_number,
+        text: body.message,
     };
 
-    postMessage(slackMessage, (response) => {
+    postMessage(message, (response) => {
         if (response.statusCode < 400) {
             console.info('Message posted successfully');
             callback(null);
