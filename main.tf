@@ -24,7 +24,7 @@ module "demo-sms-slack" {
 
   name         = "${var.name}"
   stage        = "${var.stage}"
-  description  = "route53 > api gateway > lambda"
+  description  = "sms > lambda > slack"
   runtime      = "nodejs8.10"
   handler      = "index.handler"
   memory_size  = 512
