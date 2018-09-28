@@ -39,7 +39,7 @@ function processEvent(event, callback) {
 
     const message = {
         username: body.id,
-        icon_emoji: ':iphone:',
+        icon_emoji: ':vibration_mode:',
         attachments: [{
             text: body.message,
             footer: body.phone_number,
