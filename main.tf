@@ -38,11 +38,12 @@ module "dev-sms-slack" {
   certificate_arn = "${module.domain.certificate_arn}"
   domain_name     = "${var.stage}-${var.name}.${var.domain}"
 
-  dynamodb = true
+  dynamodb = "${var.stage}-${var.name}"
 
   env_vars = {
     PROFILE        = "${var.stage}"
     SLACK_HOOK_URL = "${var.SLACK_HOOK_URL}"
+    DYNAMODB_TABLE = "${var.stage}-${var.name}"
   }
 }
 
