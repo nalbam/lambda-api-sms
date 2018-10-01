@@ -1,6 +1,6 @@
 'use strict';
 
-var create = require('./sms/create');
+const create = require('./sms/create').create;
 
 exports.handler = (event, context, callback) => {
     console.log('## handler event : ', JSON.stringify(event, null, 2));
