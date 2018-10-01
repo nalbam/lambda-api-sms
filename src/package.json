@@ -5,5 +5,7 @@
   "scripts": {
     "build": "npm install -s"
   },
-  "dependencies": {}
+  "dependencies": {
+    "uuid": "^2.0.3"
+  }
 }
