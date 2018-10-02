@@ -40,10 +40,10 @@ module "dev-sms-slack" {
   domain_name     = "${var.stage}-${var.name}.${var.domain}"
 
   // cognito
-  user_pool_name = "${var.stage}-${var.name}"
+  # user_pool_name = "${var.stage}-${var.name}"
 
   // dynamodb
-  dynamodb = "${var.stage}-${var.name}"
+  # dynamodb = "${var.stage}-${var.name}"
 
   env_vars = {
     PROFILE        = "${var.stage}"

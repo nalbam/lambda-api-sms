@@ -20,7 +20,7 @@ module.exports.scan = (event, context, callback) => {
 
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
-        KeyConditionExpression: 'phone_number = :phone_number',
+        FilterExpression: 'phone_number = :phone_number',
         ExpressionAttributeValues: {
             ':phone_number': `${param.phone_number}`,
         },
