@@ -5,8 +5,8 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.scan = (event, context, callback) => {
-    const data = JSON.parse(event.body);
-    if (typeof data.phone_number !== 'string') {
+    const param = JSON.parse(event.queryStringParameters);
+    if (typeof param.phone_number !== 'string') {
         console.error('Validation Failed');
         callback(null, {
             statusCode: 400,
@@ -21,7 +21,7 @@ module.exports.scan = (event, context, callback) => {
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
         ExpressionAttributeValues: {
-            ':phone_number': data.phone_number,
+            ':phone_number': param.phone_number,
         }
     };
 
