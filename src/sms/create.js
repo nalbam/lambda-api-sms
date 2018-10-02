@@ -28,6 +28,7 @@ module.exports.create = (event, context, callback) => {
             from: data.from,
             phone_number: data.phone_number,
             message: data.message,
+            rows: data.message.split('/n'),
             checked: false,
             createdAt: timestamp,
             updatedAt: timestamp,
