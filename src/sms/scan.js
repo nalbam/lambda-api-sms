@@ -5,7 +5,7 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.scan = (event, context, callback) => {
-    const param = JSON.parse(event.queryStringParameters);
+    const param = event.queryStringParameters;
     if (typeof param.phone_number !== 'string') {
         console.error('Validation Failed');
         callback(null, {
