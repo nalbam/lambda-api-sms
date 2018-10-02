@@ -22,7 +22,7 @@ module.exports.scan = (event, context, callback) => {
         TableName: process.env.DYNAMODB_TABLE,
         FilterExpression: 'phone_number = :phone_number',
         ExpressionAttributeValues: {
-            ':phone_number': `${param.phone_number}`,
+            ':phone_number': param.phone_number,
         },
     };
 
