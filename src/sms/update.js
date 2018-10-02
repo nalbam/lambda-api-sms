@@ -26,7 +26,7 @@ module.exports.update = (event, context, callback) => {
         },
         UpdateExpression: 'SET checked = :checked, updatedAt = :updatedAt',
         ExpressionAttributeValues: {
-            ':checked': data.checked,
+            ':checked': (data.checked === 'true'),
             ':updatedAt': timestamp,
         },
         ReturnValues: 'ALL_NEW',
