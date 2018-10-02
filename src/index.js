@@ -18,11 +18,11 @@ exports.handler = (event, context, callback) => {
 
     if (method === 'POST' && arr.length == 2) {
         create(event, context, callback);
-    } else if (method === 'PUT' && arr.length == 3) {
+    } else if (method === 'PUT' && arr.length == 4) {
         update(event, context, callback);
     } else if (method === 'GET' && arr.length == 2) {
         scan(event, context, callback);
-    } else if (method === 'GET' && arr.length == 3) {
+    } else if (method === 'GET' && arr.length == 4) {
         get(event, context, callback);
     } else {
         callback(new Error(`Unrecognized method "${method}"`));
