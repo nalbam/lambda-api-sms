@@ -19,7 +19,7 @@ module.exports.scan = (event, context, callback) => {
 
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
-        FilterExpression: 'phone_number = :phone_number',
+        FilterExpression: 'phone_number = :phone_number and checked = :checked',
         ExpressionAttributeValues: {
             ':phone_number': data.phone_number,
             ':checked': data.checked,
