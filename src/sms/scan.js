@@ -3,11 +3,28 @@
 const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-const params = {
-    TableName: process.env.DYNAMODB_TABLE,
-};
 
-module.exports.list = (event, context, callback) => {
+module.exports.scan = (event, context, callback) => {
+    const data = JSON.parse(event.body);
+    if (typeof data.phone_number !== 'string') {
+        console.error('Validation Failed');
+        callback(null, {
+            statusCode: 400,
+            headers: {
+                'Content-Type': 'text/plain'
+            },
+            body: 'Couldn\'t fetch the sms.',
+        });
+        return;
+    }
+
+    const params = {
+        TableName: process.env.DYNAMODB_TABLE,
+        ExpressionAttributeValues: {
+            ':phone_number': data.phone_number,
+        }
+    };
+
     // fetch all sms from the database
     dynamoDb.scan(params, (error, result) => {
         // handle potential errors

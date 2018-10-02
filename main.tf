@@ -34,10 +34,15 @@ module "dev-sms-slack" {
   s3_key       = "lambda/${var.name}/${var.name}-${var.version}.zip"
   http_methods = ["ANY"]
 
+  // domain
   zone_id         = "${module.domain.zone_id}"
   certificate_arn = "${module.domain.certificate_arn}"
   domain_name     = "${var.stage}-${var.name}.${var.domain}"
 
+  // cognito
+  user_pool_name = "${var.stage}-${var.name}"
+
+  // dynamodb
   dynamodb = "${var.stage}-${var.name}"
 
   env_vars = {
@@ -48,5 +53,5 @@ module "dev-sms-slack" {
 }
 
 output "url" {
-  value = "https://${module.dev-sms-slack.domain}/demos"
+  value = "https://${module.dev-sms-slack.domain}/sms"
 }

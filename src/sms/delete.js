@@ -22,7 +22,7 @@ module.exports.delete = (event, context, callback) => {
                 headers: {
                     'Content-Type': 'text/plain'
                 },
-                body: 'Couldn\'t remove the sms item.',
+                body: 'Couldn\'t delete the sms item.',
             });
             return;
         }
