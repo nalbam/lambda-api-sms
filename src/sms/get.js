@@ -10,7 +10,7 @@ module.exports.get = (event, context, callback) => {
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
         Key: {
-            id: arr[2],
+            id: `${arr[2]}`,
         },
     };
 
