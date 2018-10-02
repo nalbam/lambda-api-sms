@@ -10,10 +10,9 @@ module.exports.create = (event, context, callback) => {
         console.error('Validation Failed');
         callback(null, {
             statusCode: 400,
-            headers: {
-                'Content-Type': 'text/plain'
+            body: {
+                error: 'Validation Failed.'
             },
-            body: 'Couldn\'t create the sms item.',
         });
         return;
     }
@@ -42,10 +41,7 @@ module.exports.create = (event, context, callback) => {
             console.error(error);
             callback(null, {
                 statusCode: error.statusCode || 501,
-                headers: {
-                    'Content-Type': 'text/plain'
-                },
-                body: 'Couldn\'t create the sms item.',
+                body: error,
             });
             return;
         }

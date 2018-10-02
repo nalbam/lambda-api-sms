@@ -19,10 +19,7 @@ module.exports.delete = (event, context, callback) => {
             console.error(error);
             callback(null, {
                 statusCode: error.statusCode || 501,
-                headers: {
-                    'Content-Type': 'text/plain'
-                },
-                body: 'Couldn\'t delete the sms item.',
+                body: error,
             });
             return;
         }
