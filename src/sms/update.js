@@ -17,12 +17,13 @@ module.exports.update = (event, context, callback) => {
         return;
     }
 
+    const arr = event.path.split('/');
     const timestamp = new Date().getTime();
 
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
         Key: {
-            id: event.pathParameters.id,
+            id: arr[2],
         },
         UpdateExpression: 'SET checked = :checked, updatedAt = :updatedAt',
         ExpressionAttributeValues: {
