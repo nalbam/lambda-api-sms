@@ -27,7 +27,7 @@ module.exports.create = (event, context, callback) => {
             device_id: `${data.device_id}`,
             event: data.event,
             from: data.from,
-            phone_number: data.phone_number,
+            phone_number: `${data.phone_number}`,
             message: data.message,
             checked: false,
             createdAt: timestamp,

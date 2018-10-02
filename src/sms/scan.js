@@ -6,7 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.scan = (event, context, callback) => {
     const param = event.queryStringParameters;
-    if (typeof param.phone_number !== 'string') {
+    if (!param.phone_number) {
         console.error('Validation Failed');
         callback(null, {
             statusCode: 400,
@@ -21,7 +21,7 @@ module.exports.scan = (event, context, callback) => {
     const params = {
         TableName: process.env.DYNAMODB_TABLE,
         ExpressionAttributeValues: {
-            ':phone_number': param.phone_number,
+            ':phone_number': `${param.phone_number}`,
         }
     };
 
