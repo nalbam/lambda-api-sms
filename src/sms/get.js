@@ -5,17 +5,17 @@ const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-depe
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.get = (event, context, callback) => {
-    const param = event.queryStringParameters;
-    if (typeof param.phone_number !== 'string') {
-        console.error('Validation Failed');
-        callback(null, {
-            statusCode: 400,
-            body: {
-                error: 'Validation Failed.'
-            },
-        });
-        return;
-    }
+    // const param = event.queryStringParameters;
+    // if (typeof param.phone_number !== 'string') {
+    //     console.error('Validation Failed');
+    //     callback(null, {
+    //         statusCode: 400,
+    //         body: {
+    //             error: 'Validation Failed.'
+    //         },
+    //     });
+    //     return;
+    // }
 
     const arr = event.path.split('/');
 
@@ -23,7 +23,7 @@ module.exports.get = (event, context, callback) => {
         TableName: process.env.DYNAMODB_TABLE,
         Key: {
             id: arr[2],
-            phone_number: param.phone_number,
+            // phone_number: param.phone_number,
         },
     };
 

@@ -6,7 +6,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 module.exports.scan = (event, context, callback) => {
     const data = event.queryStringParameters;
-    if (typeof data.phone_number !== 'string' || typeof data.checked !== 'string') {
+    if (!data || typeof data.phone_number !== 'string' || typeof data.checked !== 'string') {
         console.error('Validation Failed');
         callback(null, {
             statusCode: 400,
