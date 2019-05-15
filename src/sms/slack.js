@@ -14,7 +14,7 @@ function postMessage(message, callback) {
         'Content-Length': Buffer.byteLength(body),
     };
 
-    const postReq = https.request(options, (res) => {
+    const req = https.request(options, (res) => {
         const chunks = [];
         res.setEncoding('utf8');
         res.on('data', (chunk) => chunks.push(chunk));
@@ -30,8 +30,8 @@ function postMessage(message, callback) {
         return res;
     });
 
-    postReq.write(body);
-    postReq.end();
+    req.write(body);
+    req.end();
 }
 
 function processEvent(event, callback) {
