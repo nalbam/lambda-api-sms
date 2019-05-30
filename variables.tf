@@ -1,27 +1,23 @@
-variable region {
+variable "region" {
   default = "ap-northeast-2"
 }
 
-variable name {
+variable "name" {
   default = "sms-slack"
 }
 
-variable stage {
+variable "stage" {
   default = "dev"
 }
 
-variable domain {
+variable "domain" {
   default = "nalbam.com"
 }
 
-variable s3_bucket {
+variable "s3_bucket" {
   default = "repo.nalbam.com"
 }
 
-variable version {
-  default = "1.0.0"
-}
-
-variable SLACK_HOOK_URL {
+variable "SLACK_HOOK_URL" {
   default = ""
 }

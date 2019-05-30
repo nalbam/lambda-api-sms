@@ -1,4 +1,4 @@
-// dynamodb
+# dynamodb
 
 resource "aws_dynamodb_table" "dynamodb" {
   name           = "${var.stage}-${var.name}"
@@ -17,7 +17,7 @@ resource "aws_dynamodb_table" "dynamodb" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Name = "${var.stage}-${var.name}"
   }
 }
