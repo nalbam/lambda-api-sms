@@ -12,7 +12,7 @@ module "dev-lambda" {
   name         = var.name
   stage        = var.stage
   description  = "api > lambda > sms"
-  runtime      = "nodejs8.10"
+  runtime      = "nodejs10.x"
   handler      = "index.handler"
   memory_size  = 512
   timeout      = 5
