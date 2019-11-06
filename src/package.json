@@ -1,5 +1,5 @@
 {
-  "name": "lambda-sms-slack",
+  "name": "lambda-api-sms",
   "version": "1.0.1",
   "private": true,
   "scripts": {
