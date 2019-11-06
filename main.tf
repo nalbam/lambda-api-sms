@@ -14,12 +14,12 @@ provider "aws" {
 }
 
 module "domain" {
-  source = "git::https://github.com/nalbam/terraform-aws-route53.git"
+  source = "github.com/nalbam/terraform-aws-route53?ref=v0.12.12"
   domain = var.domain
 }
 
 module "dev-lambda" {
-  source = "git::https://github.com/nalbam/terraform-aws-lambda-api.git"
+  source = "github.com/nalbam/terraform-aws-lambda-api?ref=v0.12.2"
   region = var.region
 
   name        = var.name
