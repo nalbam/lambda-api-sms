@@ -1,1 +1,1 @@
-# lambda-sms-slack
+# lambda-api-sms
