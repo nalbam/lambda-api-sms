@@ -1,5 +1,18 @@
 # Terraform Main
 
+terraform {
+  backend "s3" {
+    region = "ap-northeast-2"
+    bucket = "terraform-nalbam-seoul"
+    key    = "dev-sms-slack.tfstate"
+  }
+  required_version = ">= 0.12"
+}
+
+provider "aws" {
+  region = var.region
+}
+
 module "domain" {
   source = "git::https://github.com/nalbam/terraform-aws-route53.git"
   domain = var.domain
@@ -9,17 +22,16 @@ module "dev-lambda" {
   source = "git::https://github.com/nalbam/terraform-aws-lambda-api.git"
   region = var.region
 
-  name         = var.name
-  stage        = var.stage
-  description  = "api > lambda > sms"
-  runtime      = "nodejs10.x"
-  handler      = "index.handler"
-  memory_size  = 512
-  timeout      = 5
-  s3_bucket    = var.s3_bucket
-  s3_source    = "target/lambda.zip"
-  s3_key       = "lambda/${var.name}/${var.name}.zip"
-  http_methods = ["ANY"]
+  name        = var.name
+  stage       = var.stage
+  description = "api > lambda > sms"
+  runtime     = "nodejs10.x"
+  handler     = "index.handler"
+  memory_size = 512
+  timeout     = 5
+  s3_bucket   = var.s3_bucket
+  s3_source   = "target/lambda.zip"
+  s3_key      = "lambda/${var.name}/${var.name}-${var.build_no}.zip"
 
   // domain
   zone_id         = module.domain.zone_id
@@ -37,8 +49,4 @@ module "dev-lambda" {
     SLACK_HOOK_URL = var.SLACK_HOOK_URL
     DYNAMODB_TABLE = "${var.stage}-${var.name}"
   }
-}
-
-output "url" {
-  value = "https://${module.dev-lambda.domain}/sms"
 }
