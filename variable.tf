@@ -5,7 +5,7 @@ variable "region" {
 }
 
 variable "name" {
-  default = "sms-slack"
+  default = "api-sms"
 }
 
 variable "stage" {
