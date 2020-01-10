@@ -27,7 +27,7 @@ module "dev-lambda" {
   description = "api > lambda > sms"
   runtime     = "nodejs10.x"
   handler     = "index.handler"
-  memory_size = 512
+  memory_size = 1024
   timeout     = 5
   s3_bucket   = var.s3_bucket
   s3_source   = "target/lambda.zip"
@@ -37,12 +37,6 @@ module "dev-lambda" {
   zone_id         = module.domain.zone_id
   certificate_arn = module.domain.certificate_arn
   domain_name     = "${var.stage}-${var.name}.${var.domain}"
-
-  // cognito
-  # user_pool_name = "${var.stage}-${var.name}"
-
-  // dynamodb
-  # dynamodb = "${var.stage}-${var.name}"
 
   env_vars = {
     PROFILE        = var.stage
